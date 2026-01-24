@@ -1,54 +1,54 @@
 AgentesColaborativos_Grupo_X/
 │
 ├── README.md
-├── requirements.txt
+├── requerimentos.txt
 ├── .gitignore
 │
-├── docs/                     # Documentação
+├── docs/
 │   ├── relatorio.pdf
 │   ├── apresentacao.pdf
 │   └── referencias.md
 │
-├── data/                     # Dados e mapas
-│   ├── maps/
-│   │   ├── base_map.json
-│   │   └── test_maps/
+├── data/
+│   ├── mapas/
+│   │   ├── mapa_base.json
+│   │   └── mapa_teste/
 │   └── logs/
-│       └── exec_log.txt
+│       └── execucao.log
 │
 ├── src/
-│   ├── main.py               # Ponto de entrada
-│   │
-│   ├── environment/          # PARTE 1
-│   │   ├── __init__.py
-│   │   ├── map_generator.py
-│   │   ├── validator.py
-│   │   └── cell.py
-│   │
-│   ├── agents/               # PARTE 2
-│   │   ├── __init__.py
-│   │   ├── base_agent.py
-│   │   ├── random_agent.py
-│   │   ├── knn_agent.py
-│   │   ├── tree_agent.py
-│   │   └── shared_memory.py
-│   │
-│   ├── simulation/           # PARTE 3
-│   │   ├── __init__.py
-│   │   ├── engine.py
-│   │   ├── approaches.py     # A, B, C
-│   │   └── metrics.py
-│   │
-│   ├── ui/                    # Interface
-│   │   ├── __init__.py
-│   │   ├── dashboard.py
-│   │   └── renderer.py
-│   │
-│   └── utils/
-│       ├── helpers.py
-│       └── constants.py
+│   ├── main.py
 │
-└── tests/
-    ├── test_map.py
-    ├── test_agents.py
-    └── test_simulation.py
+│   ├── ambientes/
+│   │   ├── __init__.py
+│   │   ├── gerador_mapa.py
+│   │   ├── validador.py
+│   │   └── celula.py
+│
+│   ├── agentes/
+│   │   ├── __init__.py
+│   │   ├── agente_base.py
+│   │   ├── agente_busca.py
+│   │   ├── agente_ml.py
+│   │   ├── agente_hibrido.py
+│   │   └── memoria_partilhada.py
+│
+│   ├── simulacao/
+│   │   ├── __init__.py
+│   │   ├── motor.py
+│   │   ├── modos_jogo.py
+│   │   └── metricas.py
+│
+│   ├── ui/
+│   │   ├── __init__.py
+│   │   ├── painel.py
+│   │   └── renderizador.py
+│
+│   └── utils/
+│       ├── ajudas.py
+│       └── constantes.py
+│
+└── testes/
+    ├── teste_mapa.py
+    ├── teste_agente.py
+    └── teste_simulacao.py
