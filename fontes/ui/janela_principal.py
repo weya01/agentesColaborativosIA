@@ -23,8 +23,10 @@ class JanelaPrincipal(QWidget):
         self.timer = QTimer()
         self.timer.timeout.connect(self.atualizar)
 
+        self.grid.atualizar(self.motor.agentes)
+
     def iniciar(self):
-        self.timer.start(300)  # 300 ms por turno
+        self.timer.start(600)  # 500 ms por turno
 
     def atualizar(self):
         if not self.motor._fim():
@@ -34,5 +36,3 @@ class JanelaPrincipal(QWidget):
             self.timer.stop()
             print("Simulação terminou.")
             return
-        self.motor.executar_um_turno()
-        self.grid.atualizar(self.motor.agentes)

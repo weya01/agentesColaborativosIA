@@ -6,3 +6,7 @@ class AgenteHibrido(AgenteBusca):
         if random.random() < 0.7:
             return super().decidir_acao()
         return random.choice(self.mapa.vizinhos(self.posicao))
+
+# BFS + heuristica
+# BFS + ML
+# A* + Memoria Estatica

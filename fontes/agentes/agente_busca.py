@@ -1,174 +1,119 @@
 from collections import deque
+
+from numpy import info
 from agentes.agente_base import AgenteBase
 import heapq
 
-class AgenteBusca(AgenteBase):
+class AgenteBFS(AgenteBase):
+
+    def __init__(self, nome, mapa, memoria, modo):
+        super().__init__(nome, mapa, memoria, modo)
+        self.grupo = "Busca"
+
     def decidir_acao(self):
-        vizinhos = self.mapa.vizinhos((self.x, self.y))
-        for v in vizinhos:
-            if not self.memoria.consultar(v):
-                return v
-        return None
-
-
-class AgenteBusca(AgenteBase):
-    def __init__(self, nome, mapa, tipo_busca="BFS"):
-        super().__init__(nome, mapa)
-        self.tipo_busca = tipo_busca
-        self.caminho = []
-        self._planear_caminho()
-
-    # -----------------------------
-    # Planeamento
-    # -----------------------------
-    def _planear_caminho(self):
-        if self.tipo_busca == "BFS":
-            self.caminho = self._bfs()
-        elif self.tipo_busca == "DFS":
-            self.caminho = self._dfs()
-        elif self.tipo_busca == "GULOSA":
-            self.caminho = self._gulosa()
-        else:
-            raise ValueError("Tipo de busca inválido")
-
-    # -----------------------------
-    # Execução
-    # -----------------------------
-    def decidir_acao(self):
-        if not self.caminho:
-            self.terminou = True
-            return None
-
-        prox = self.caminho.pop(0)
-        dx = prox[0] - self.x
-        dy = prox[1] - self.y
-
-        if dx == -1: return "CIMA"
-        if dx == 1: return "BAIXO"
-        if dy == -1: return "ESQUERDA"
-        if dy == 1: return "DIREITA"
-
-    # -----------------------------
-    # BFS
-    # -----------------------------
-    def _bfs(self):
         fila = deque()
-        fila.append((self.x, self.y))
-        pais = {}
         visitados = set()
 
+        fila.append((self.posicao(), []))
+
         while fila:
-            x, y = fila.popleft()
+            (x, y), caminho = fila.popleft()
+
+            if (x, y) in visitados:
+                continue
             visitados.add((x, y))
 
-            if self.mapa[x][y] == "F":
-                return self._reconstruir_caminho(pais, (x, y))
+            celula = self.mapa.ver((x, y))
+            objetivo_encontrado = (self.modo == "C" and celula == "F") or (self.modo != "C" and (celula == "T" or celula == "F"))
+            if objetivo_encontrado:
+                return caminho[0] if caminho else None
 
-            for dx, dy in [(-1,0),(1,0),(0,-1),(0,1)]:
-                nx, ny = x + dx, y + dy
-                if self._posicao_valida(nx, ny) and (nx, ny) not in visitados:
-                    fila.append((nx, ny))
-                    pais[(nx, ny)] = (x, y)
+            for direcao, (nx, ny) in self.mapa.vizinhos_com_direcao(x, y):
+                if not self.memoria.consultar((nx, ny)):
+                    fila.append(((nx, ny), caminho + [direcao]))
 
-        return []
+        return None
 
-    # -----------------------------
-    # DFS
-    # -----------------------------
-    def _dfs(self):
-        pilha = [(self.x, self.y)]
-        pais = {}
+class AgenteDFS(AgenteBase):
+
+    def __init__(self, nome, mapa, memoria):
+        super().__init__(nome, mapa, memoria)
+        self.grupo = "Busca"
+
+    def decidir_acao(self):
+        pilha = [ (self.posicao(), []) ]
         visitados = set()
 
         while pilha:
-            x, y = pilha.pop()
+            (x, y), caminho = pilha.pop()
+
+            if (x, y) in visitados:
+                continue
             visitados.add((x, y))
 
-            if self.mapa[x][y] == "F":
-                return self._reconstruir_caminho(pais, (x, y))
+            if self.mapa.ver((x, y)) == "T":
+                return caminho[0] if caminho else None
 
-            for dx, dy in [(-1,0),(1,0),(0,-1),(0,1)]:
-                nx, ny = x + dx, y + dy
-                if self._posicao_valida(nx, ny) and (nx, ny) not in visitados:
-                    pilha.append((nx, ny))
-                    pais[(nx, ny)] = (x, y)
+            for direcao, (nx, ny) in self.mapa.vizinhos_com_direcao(x, y):
+                if not self.memoria.consultar((nx, ny)):
+                    pilha.append(((nx, ny), caminho + [direcao]))
 
-        return []
+        return None
 
-    # -----------------------------
-    # Gulosa (heurística Manhattan)
-    # -----------------------------
-    def _gulosa(self):
+class AgenteGuloso(AgenteBase):
+
+    def __init__(self, nome, mapa, memoria):
+        super().__init__(nome, mapa, memoria)
+        self.grupo = "Busca"
+
+    def decidir_acao(self):
         objetivo = self._encontrar_objetivo()
-        fronteira = [(self.x, self.y)]
-        pais = {}
-        visitados = set()
+        melhores = []
 
-        while fronteira:
-            fronteira.sort(key=lambda p: abs(p[0]-objetivo[0]) + abs(p[1]-objetivo[1]))
-            x, y = fronteira.pop(0)
+        for direcao, (nx, ny) in self.mapa.vizinhos_com_direcao(self.x, self.y):
+            if self.memoria.consultar((nx, ny)) == "B":
+                continue
 
-            if (x, y) == objetivo:
-                return self._reconstruir_caminho(pais, (x, y))
+            h = abs(nx - objetivo[0]) + abs(ny - objetivo[1])
+            melhores.append((h, direcao))
 
-            visitados.add((x, y))
+        if melhores:
+            melhores.sort()
+            return melhores[0][1]
 
-            for dx, dy in [(-1,0),(1,0),(0,-1),(0,1)]:
-                nx, ny = x + dx, y + dy
-                if self._posicao_valida(nx, ny) and (nx, ny) not in visitados:
-                    fronteira.append((nx, ny))
-                    pais[(nx, ny)] = (x, y)
-
-        return []
-
-    # -----------------------------
-    # Utilitários
-    # -----------------------------
-    def _reconstruir_caminho(self, pais, fim):
-        caminho = []
-        atual = fim
-        while atual in pais:
-            caminho.append(atual)
-            atual = pais[atual]
-        caminho.reverse()
-        return caminho
+        return None
 
     def _encontrar_objetivo(self):
-        for i in range(len(self.mapa)):
-            for j in range(len(self.mapa)):
-                if self.mapa[i][j] == "F":
+        for i in range(self.tamanho):
+            for j in range(self.tamanho):
+                if self.mapa.ver((i, j)) == "F":
                     return (i, j)
 
 
-class AgenteBFS(AgenteBase):
-    def decidir_acao(self):
-        fila = deque(self.mapa.vizinhos((self.x, self.y)))
-        while fila:
-            pos = fila.popleft()
-            if not self.memoria.consultar(pos):
-                return pos
-        return None
-
-
-class AgenteDFS(AgenteBase):
-    def decidir_acao(self):
-        pilha = list(self.mapa.vizinhos((self.x,self.y)))
-        while pilha:
-            pos = pilha.pop()
-            if not self.memoria.consultar(pos):
-                return pos
-        return None
-
-
 class AgenteAStar(AgenteBase):
+
+    def __init__(self, nome, mapa, memoria):
+        super().__init__(nome, mapa, memoria)
+        self.grupo = "Busca"
+
     def decidir_acao(self):
         heap = []
-        for v in self.mapa.vizinhos((self.x,self.y)):
-            custo = abs(v[0]) + abs(v[1])
-            heapq.heappush(heap, (custo, v))
+        heapq.heappush(heap, (0, self.posicao(), []))
+        visitados = set()
 
         while heap:
-            _, pos = heapq.heappop(heap)
-            if not self.memoria.consultar(pos):
-                return pos
+            custo, (x, y), caminho = heapq.heappop(heap)
+
+            if (x, y) in visitados:
+                continue
+            visitados.add((x, y))
+
+            if self.mapa.ver((x, y)) == "F":
+                return caminho[0] if caminho else None
+
+            for direcao, (nx, ny) in self.mapa.vizinhos_com_direcao(x, y):
+                if not self.memoria.consultar((nx, ny)):
+                    h = abs(nx - x) + abs(ny - y)
+                    heapq.heappush(heap, (custo + h, (nx, ny), caminho + [direcao]))
+
         return None

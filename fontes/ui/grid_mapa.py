@@ -11,6 +11,15 @@ class GridMapa(QWidget):
         self.layout = QGridLayout()
         self.celulas = {}
 
+        # Cores para distinguir agentes
+        self.cores_agentes = {
+            "BFS1": "#00cc66",  # Verde
+            "BFS2": "#0066cc",  # Azul
+            "NB1": "#ff6600",   # Laranja
+            "KNN1": "#cc00cc",  # Roxo
+            "ML": "#ffcc00"     # Amarelo
+        }
+
         self.setLayout(self.layout)
         self._criar_grid()
 
@@ -35,6 +44,7 @@ class GridMapa(QWidget):
         # desenha agentes
         for ag in agentes:
             if ag.vivo:
+                cor = self.cores_agentes.get(ag.nome, CORES['A'])
                 self.celulas[(ag.x, ag.y)].setStyleSheet(
-                    f"background-color: {CORES['A']};"
+                    f"background-color: {cor};"
                 )
