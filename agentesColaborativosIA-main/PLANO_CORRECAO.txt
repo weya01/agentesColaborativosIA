@@ -1,0 +1,55 @@
+"""
+ANÁLISE E PLANO DE CORREÇÃO
+============================
+
+PROBLEMAS IDENTIFICADOS:
+
+1. ❌ MAPA NÃO APARECE NA UI
+   - Causa: self.grid_mapa = QLabel (placeholder)
+   - Solução: Usar GridMapa(mapa) em vez de QLabel
+   
+2. ❌ CICLO DE IA INCOMPLETO
+   - Agentes não executam perceção → memória → decisão → ação
+   - Solução: Garantir que cada agente chama executar_turno()
+   
+3. ❌ LÓGICA DE SUCESSO NA UI (ERRADO)
+   - Deve estar no simulador
+   - Solução: Mover para MotorSimulacao
+   
+4. ❌ ABORDAGEM A TERMINA CEDO
+   - Verifica sucesso incorretamente
+   - Solução: Contar tesouros DESCOBERTOS, não coletados
+   
+5. ❌ SEM ALEATORIEDADE DE AGENTES
+   - Campo "Tipo de Agente" limita a um tipo
+   - Solução: Gerar aleatoriamente 2-10 agentes com múltiplos algoritmos
+   
+6. ❌ SEM RENDERIZAÇÃO DE EXPLORAÇÃO
+   - Mapa não mostra células exploradas/bombas conhecidas
+   - Solução: Renderizar baseado na memória do grupo
+
+---
+
+PLANO DE EXECUÇÃO:
+
+FASE 1: Corrigir MotorSimulacao
+  - Implementar ciclo de IA completo
+  - Centralizar lógica de sucesso
+  - Contar tesouros descobertos (não coletados)
+
+FASE 2: Corrigir JanelaPrincipal
+  - Usar GridMapa em vez de QLabel
+  - Gerar agentes aleatoriamente (2-10)
+  - Remover limitação de tipo único
+
+FASE 3: Melhorar renderização
+  - Mostrar células exploradas
+  - Mostrar bombas conhecidas
+  - Mostrar tesouros descobertos
+
+FASE 4: Validar métricas
+  - Garantir que são refletidas corretamente
+  - Atualizar a cada turno
+
+---
+"""

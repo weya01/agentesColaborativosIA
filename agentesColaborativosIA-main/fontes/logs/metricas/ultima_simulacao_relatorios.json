@@ -1,0 +1,66 @@
+{
+  "0": {
+    "grupo": 0,
+    "modo_jogo": "ModoJogo.A_TESOUROS",
+    "tempo_simulacao": "0:02:17.043633",
+    "objetivo_alcancado": false,
+    "metricas_obrigatorias": {
+      "tesouros_coletados": 0,
+      "celulas_exploradas": 0,
+      "tempo_decorrido_turnos": 1,
+      "agentes_vivos": 3,
+      "agentes_mortos": 0,
+      "bandeira_encontrada": false,
+      "algoritmos_usados": {}
+    },
+    "metricas_adicionais": {
+      "eficiencia_exploracao": 0.0,
+      "taxa_mortalidade_pct": 0.0,
+      "cobertura_mapa_pct": 0.0,
+      "passos_totais": 0,
+      "bombas_acionadas": 0,
+      "taxa_sucesso": 0.0
+    },
+    "agentes": {
+      "A1": {
+        "id_agente": "A1",
+        "tipo_agente": "BFS",
+        "passos": 0,
+        "bombas_acionadas": 0,
+        "tesouros_coletados": 0,
+        "celulas_exploradas": 0,
+        "celulas_seguras": 0,
+        "morto": false,
+        "turno_morte": null,
+        "algoritmos_principais": {},
+        "eficiencia": 0.0
+      },
+      "A2": {
+        "id_agente": "A2",
+        "tipo_agente": "BFS",
+        "passos": 0,
+        "bombas_acionadas": 0,
+        "tesouros_coletados": 0,
+        "celulas_exploradas": 0,
+        "celulas_seguras": 0,
+        "morto": false,
+        "turno_morte": null,
+        "algoritmos_principais": {},
+        "eficiencia": 0.0
+      },
+      "A3": {
+        "id_agente": "A3",
+        "tipo_agente": "BFS",
+        "passos": 0,
+        "bombas_acionadas": 0,
+        "tesouros_coletados": 0,
+        "celulas_exploradas": 0,
+        "celulas_seguras": 0,
+        "morto": false,
+        "turno_morte": null,
+        "algoritmos_principais": {},
+        "eficiencia": 0.0
+      }
+    }
+  }
+}

@@ -1,0 +1,130 @@
+"""
+GUIA RÁPIDO DE INÍCIO
+=====================
+
+## Instalação (5 minutos)
+
+1. Instale dependências:
+   pip install PySide6
+
+2. Navegue até o diretório do projeto:
+   cd fontes
+
+## Executar (Escolha uma opção)
+
+### Opção 1: Interface Gráfica (Recomendado)
+   python main.py
+   
+   Abre janela com:
+   - Seletor de modo de jogo (A/B/C)
+   - Seletor de tipo de agente (8 tipos)
+   - Controle de número de agentes (1-10)
+   - Painel de métricas em tempo real
+   - Exportação de resultados em JSON
+
+### Opção 2: Validação de Arquitetura
+   python validar_arquitetura.py
+   
+   Executa 6 testes de validação:
+   ✓ Imports
+   ✓ Geração de mapas
+   ✓ Memória partilhada
+   ✓ Agentes individuais
+   ✓ Sistema de métricas
+   ✓ Integração completa
+
+### Opção 3: Uso Programático
+   Ver DOCUMENTACAO.md, seção "Uso Programático"
+
+## Estrutura de 10 Segundos
+
+```
+Agentes (8 tipos) → Memória Partilhada → Ciclo de IA
+                         ↓
+                    Métricas (7 obrigatórias)
+                         ↓
+                    Interface Gráfica
+```
+
+## Os 7 Tipos Principais de Agentes
+
+1. **BFS** - Busca em largura (caminho mais curto)
+2. **Árvore de Busca** - Busca com limite de profundidade
+3. **Aleatório** - Movimento aleatório com variantes
+4. **Exploração** - Exploração dirigida (espiral/camadas)
+5. **KNN** - K-Vizinhos Mais Próximos
+6. **Híbrido** - Combina BFS + exploração
+7. **Adaptativo** - Auto-melhoria por sucesso
+8. **Combinado** - Votação de 3 estratégias
+
+## Os 3 Modos de Jogo
+
+| Modo | Objetivo | Bombas | Tesouros |
+|------|----------|--------|----------|
+| A | 50% dos tesouros | 25% | 35% |
+| B | Explorar tudo | 55% | 15% |
+| C | Encontrar bandeira | 45% | 0% |
+
+## Métricas Monitoradas (7+6)
+
+**Obrigatórias:**
+1. Tesouros coletados
+2. Células exploradas
+3. Tempo (turnos)
+4. Agentes vivos
+5. Agentes mortos
+6. Bandeira encontrada
+7. Algoritmos usados
+
+**Adicionais:**
+- Eficiência de exploração
+- Taxa de mortalidade
+- Cobertura do mapa
+- Passos totais
+- Bombas acionadas
+- Taxa de sucesso
+
+## Dúvidas Frequentes
+
+**P: Como escolher tipo de agente?**
+R: Começar com BFS (mais previsível), depois experimentar Híbrido ou Adaptativo.
+
+**P: Qual é o modo mais fácil?**
+R: Modo A (Tesouros) - tem mais tesouros, menos bombas.
+
+**P: Posso combinar agentes diferentes?**
+R: Sim! Você pode misturar tipos na UI (próximas agentes que você adicionar).
+
+**P: Onde estão os resultados exportados?**
+R: Em logs/metricas/ com nome "ultima_simulacao_*.json"
+
+**P: Qual velocidade devo usar?**
+R: 300ms é boa para visualizar. 100ms para testes rápidos.
+
+## Próximos Passos
+
+1. Execute a aplicação: `python main.py`
+2. Teste com modo A + 3 agentes BFS
+3. Exporte métricas
+4. Explore os 3 modos de jogo
+5. Compare desempenho de diferentes agentes
+6. Leia DOCUMENTACAO.md para detalhes técnicos
+
+## Estrutura Criada
+
+✅ 8 tipos de agentes (4 busca, 3 não-busca, 3 híbridos)
+✅ Ciclo IA completo (percepção→memória→decisão→ação)
+✅ Memória partilhada com isolamento por grupo
+✅ Sistema de métricas (7 obrigatórias + 6 adicionais)
+✅ Gerador e validador de mapas
+✅ Interface gráfica com PySide6
+✅ Testes de validação completos
+✅ Documentação detalhada
+
+## Suporte
+
+Para erros ou dúvidas, veja:
+- DOCUMENTACAO.md (completa)
+- validar_arquitetura.py (testes)
+- Código comentado em cada módulo
+"""

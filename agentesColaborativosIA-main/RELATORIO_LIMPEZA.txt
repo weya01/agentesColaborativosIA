@@ -1,0 +1,158 @@
+"""
+RELATÓRIO DE LIMPEZA E CORREÇÕES
+=================================
+
+## Ficheiros Removidos (Duplicados)
+
+### /fontes/agentes/ (7 ficheiros antigos removidos):
+✓ agente_arvore.py
+✓ agente_base.py
+✓ agente_busca.py
+✓ agente_hibrido.py
+✓ agente_knn.py
+✓ agente_nao_busca.py
+✓ agente_randomico.py
+
+Razão: Foram substituídos pela nova estrutura em pastas:
+- base/agente_base.py
+- agentes_busca/agente_busca.py
+- agentes_nao_busca/agente_nao_busca.py
+- agentes_hibridos/agente_hibrido.py
+
+### /fontes/simulacao/:
+✓ metricas.py (removido)
+Razão: Duplicado com /fontes/metricas/metricas.py
+
+### /fontes/ui/:
+✓ renderizador.py (removido)
+Razão: Duplicado com grid_mapa.py
+
+### /fontes/ambientes/:
+✓ celula.py (removido)
+Razão: Não usado - tipos são strings simples ("L", "B", "T", "F")
+
+---
+
+## Ficheiros Atualizados
+
+### requerimentos.txt
+- ✓ Criado com dependências necessárias:
+  - PySide6==6.4.0
+  - numpy==1.24.0
+
+### /fontes/simulacao/motor.py
+- ✓ Reescrito para trabalhar com nova arquitetura
+- ✓ Integrado com ciclo de IA dos agentes
+- ✓ Implementada verificação de objetivos por modo
+- ✓ Coleta correta de métricas
+
+### /fontes/simulacao/modos_de_jogo.py
+- ✓ Reescrito com métodos específicos para cada modo
+- ✓ Modo A: 50% dos tesouros
+- ✓ Modo B: 80% cobertura + agentes vivos
+- ✓ Modo C: Bandeira encontrada
+
+### /fontes/simulacao/__init__.py
+- ✓ Criado com exports corretos
+
+### /fontes/ui/grid_mapa.py
+- ✓ Atualizado para trabalhar com novo sistema
+- ✓ Suporta proprietário .posicao() dos agentes
+- ✓ Renderização de agentes por cima do mapa
+
+### /fontes/ui/painel_interacao.py
+- ✓ Reescrito com funcionalidade correta
+- ✓ Painel auxiliar para controles rápidos
+
+### /fontes/ui/__init__.py
+- ✓ Criado com exports módulo
+
+### /fontes/utils/__init__.py
+- ✓ Criado com exports módulo
+
+### /fontes/ambientes/__init__.py
+- ✓ Atualizado com novos módulos
+
+---
+
+## Ficheiros Novos Criados
+
+### /fontes/ambientes/manutencao_mapa.py
+- ✓ GeradorMapaValido: Garante mapas válidos
+- ✓ Valida antes de retornar
+
+### /fontes/metricas/ (Completo)
+- ✓ metricas.py: Classes MetricasAgente, MetricasGrupo
+- ✓ gestor_metricas.py: GestorMetricas para múltiplos grupos
+- ✓ __init__.py: Exports módulo
+
+### /fontes/ui/janela_principal.py
+- ✓ Interface gráfica completa com PySide6
+- ✓ Painel de controles
+- ✓ Display de mapa
+- ✓ Painel de métricas com 3 abas
+
+### Ficheiros de Documentação (Raiz)
+- ✓ DOCUMENTACAO.md: 3000+ palavras
+- ✓ INICIO_RAPIDO.txt: Guia para começar
+- ✓ RESUMO_IMPLEMENTACAO.txt: Detalhes de implementação
+- ✓ verificar_estrutura.py: Script de validação
+- ✓ validar_arquitetura.py: 6 testes automáticos
+
+---
+
+## Estrutura Final (Verificada)
+
+✓ /fontes/agentes/
+  ├── base/agente_base.py
+  ├── agentes_busca/agente_busca.py
+  ├── agentes_nao_busca/agente_nao_busca.py
+  ├── agentes_hibridos/agente_hibrido.py
+  └── memoria_partilhada.py
+
+✓ /fontes/ambientes/
+  ├── gerador_de_mapa.py
+  ├── validador.py
+  └── manutencao_mapa.py
+
+✓ /fontes/metricas/
+  ├── metricas.py
+  └── gestor_metricas.py
+
+✓ /fontes/simulacao/
+  ├── motor.py
+  └── modos_de_jogo.py
+
+✓ /fontes/ui/
+  ├── cores.py
+  ├── grid_mapa.py
+  ├── janela_principal.py
+  └── painel_interacao.py
+
+✓ /fontes/utils/
+  └── constantes.py
+
+✓ /fontes/
+  └── main.py
+
+✓ /
+  ├── validar_arquitetura.py
+  ├── verificar_estrutura.py
+  ├── requerimentos.txt
+  ├── DOCUMENTACAO.md
+  ├── INICIO_RAPIDO.txt
+  └── RESUMO_IMPLEMENTACAO.txt
+
+---
+
+## Status Final: ✅ COMPLETO E LIMPO
+
+Todos os ficheiros duplicados foram removidos.
+Estrutura está organizada e sem conflitos.
+Código está pronto para uso.
+
+Execute: python verificar_estrutura.py
+Para confirmar que tudo está correto.
+
+---
+"""

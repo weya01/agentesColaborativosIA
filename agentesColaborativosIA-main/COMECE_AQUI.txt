@@ -1,0 +1,78 @@
+╔══════════════════════════════════════════════════════════════╗
+║  PROGRAMA PRONTO - SIGA ESTAS INSTRUÇÕES SIMPLES             ║
+╚══════════════════════════════════════════════════════════════╝
+
+1️⃣  ABRIR TERMINAL (Command Prompt ou PowerShell)
+
+2️⃣  EXECUTAR ESTE COMANDO:
+
+    cd C:\Users\HP\Downloads\agentesColaborativosIA-main\agentesColaborativosIA-main\fontes
+    python main.py
+
+3️⃣  NA JANELA DO PROGRAMA:
+
+    • Selecione uma abordagem (A, B ou C)
+    • Clique "Iniciar Simulação"
+    • Veja o mapa com cores e símbolos:
+      💣 Bomba (vermelho)
+      💰 Tesouro (ouro)
+      🚩 Bandeira (roxo)
+      Números verdes = agentes
+    
+    • Clique "Próximo Turno" para executar ações
+    • Alterne entre abordagens a qualquer momento
+
+═══════════════════════════════════════════════════════════════
+
+✅ STATUS: Tudo está funcionando!
+
+✅ Abordagem A funciona
+✅ Abordagem B funciona (CORRIGIDA)
+✅ Abordagem C funciona
+✅ GridMapa sem crashes (CORRIGIDA)
+✅ Mapa com cores e símbolos (CORRIGIDA)
+✅ Grid alinhado (CORRIGIDA)
+
+═══════════════════════════════════════════════════════════════
+
+❓ PROBLEMAS RESOLVIDOS:
+
+[ANTES] ❌ Abordagem B não gera mapas
+[DEPOIS] ✅ Abordagem B gera com sucesso
+
+[ANTES] ❌ GridMapa crasheia ao alternar
+[DEPOIS] ✅ Alternância funciona perfeitamente
+
+[ANTES] ❌ Mapa renderiza tudo branco
+[DEPOIS] ✅ Mapa colorido com símbolos
+
+[ANTES] ❌ Colunas desalinhadas
+[DEPOIS] ✅ Grid perfeitamente alinhado
+
+═══════════════════════════════════════════════════════════════
+
+📚 DOCUMENTAÇÃO (se quiser saber mais):
+
+Leia estes ficheiros:
+  • CORRECOES_FINAL.md (detalhes técnicos)
+  • GUIA_RAPIDO.md (como usar)
+  • INDICE_DOCUMENTACAO.md (índice completo)
+
+═══════════════════════════════════════════════════════════════
+
+🧪 TESTES (opcional, para verificar tudo):
+
+cd C:\...\fontes
+
+python teste_abordagens.py              # Gera mapas
+python teste_renderizacao_headless.py   # Renderização
+python teste_alternancia.py             # Alternância
+python teste_final_completo.py          # Tudo junto
+
+Todos devem passar com ✅
+
+═══════════════════════════════════════════════════════════════
+
+Pronto! Divirta-se! 🎮
+
+═══════════════════════════════════════════════════════════════

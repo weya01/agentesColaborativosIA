@@ -1,0 +1,18 @@
+{
+  "total_grupos": 1,
+  "grupos": {
+    "0": {
+      "modo": "ModoJogo.A_TESOUROS",
+      "tesouros": 0,
+      "cobertura": 0.0,
+      "mortalidade": 0.0,
+      "eficiencia": 0.0,
+      "sucesso": 0.0
+    }
+  },
+  "agregados": {
+    "tesouros_total": 0,
+    "cobertura_media": 0.0,
+    "mortalidade_media": 0.0
+  }
+}

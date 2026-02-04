@@ -1,0 +1,10 @@
+Set objFSO = CreateObject("Scripting.FileSystemObject")
+Set objFile = objFSO.CreateTextFile("c:\Users\HP\Downloads\agentesColaborativosIA-main\agentesColaborativosIA-main\fontes\ui\janela_principal.py", True, True)
+
+objFile.WriteLine("""Janela principal - Versão nova multi-grupo.""")
+objFile.WriteLine("""Redireciona para janela_principal_multi_grupo.""")
+objFile.WriteLine("")
+objFile.WriteLine("from .janela_principal_multi_grupo import JanelaPrincipalMultiGrupo as JanelaPrincipal")
+objFile.WriteLine("")
+objFile.WriteLine("__all__ = ['JanelaPrincipal']")
+objFile.Close()

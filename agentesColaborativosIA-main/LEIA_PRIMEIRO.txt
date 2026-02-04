@@ -1,0 +1,78 @@
+# 📚 DOCUMENTOS PARA CONSULTAR
+
+## Recomendado antes da defesa
+
+### 1. **RESUMO_FINAL.md** ⭐ COMECE AQUI
+   - Tudo o que foi feito resumidamente
+   - Alinhamento com enunciado (80%)
+   - Última verificação antes da defesa
+
+### 2. **GUIA_RAPIDO.md** 
+   - Como usar a aplicação
+   - Fluxo passo a passo
+   - Troubleshooting de problemas
+
+### 3. **STATUS_FINAL.txt**
+   - Sumário visual
+   - Testes realizados
+   - Checklist final
+
+---
+
+## Técnicos (se precisar de detalhes)
+
+### 4. **RELATORIO_CORRECOES.md**
+   - Ficheiros modificados
+   - Alterações específicas
+   - Razão de cada mudança
+
+### 5. **ANALISE_ALINHAMENTO.md**
+   - Requisitos vs implementação
+   - O que falta vs o que foi feito
+   - Próximas melhorias
+
+### 6. **PLANO_CORRECAO.txt**
+   - Problemas iniciais
+   - Fases de correção
+   - Estado de cada problema
+
+---
+
+## Para executar
+
+### Aplicação Principal
+```bash
+cd fontes
+python main.py
+```
+
+### Teste Automático
+```bash
+python teste_ia.py
+```
+
+### Verificar Estrutura
+```bash
+python validar_arquitetura.py
+```
+
+---
+
+## Estrutura de Ficheiros (o que foi mudado)
+
+```
+fontes/
+├── ui/
+│   ├── janela_principal.py ✏️  (Selector A/B/C)
+│   └── grid_mapa.py ✏️         (Renderização)
+├── simulacao/
+│   └── motor.py ✏️             (Lógica A/B/C)
+├── agentes/
+│   └── base/agente_base.py ✏️  (Ciclo IA)
+└── ambientes/
+    └── validador_acessibilidade.py ✨ (NOVO)
+```
+
+---
+
+**✅ Tudo pronto para defesa! Consulte RESUMO_FINAL.md primeiro.**
